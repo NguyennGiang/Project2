@@ -6,11 +6,11 @@
           <h3>Customer</h3>
           <div class="row">
             <div class="col-md-2">
-              <label for="">First Name</label>
+              <label for="">Your Name</label>
             </div>
             <div class="col-md-9">
               <div class="input-space">
-                <input type="text" formControlName="firstName" />
+                <input type="text" formControlName="firstName" readonly = "true"/>
               </div>
             </div>
           </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-9">
               <div class="input-space">
-                <input type="text" formControlName="lastName" />
+                <input type="text" formControlName="lastName" readonly = "true"/>
               </div>
             </div>
           </div>
@@ -43,14 +43,14 @@
             </div>
             <div class="col-md-9">
               <div class="input-space">
-                <input type="text" formControlName="email" />
+                <input type="text" formControlName="email" readonly = true/>
               </div>
             </div>
           </div>
         </div>
 
         <!--Shipping address-->
-        <div formGroupName="billingAddress" class="form-area">
+        <div formGroupName="shippingAddress" class="form-area">
           <h3>Shipping Address</h3>
           <div class="row">
             <div class="col-md-2">

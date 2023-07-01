@@ -5,11 +5,11 @@ import com.hust.ecommerce.dto.PurchaseResponse;
 import com.hust.ecommerce.service.CheckoutService;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/checkout")
+@CrossOrigin("http://localhost:4200")
 public class CheckoutController {
-    private CheckoutService checkoutService;
+    private final CheckoutService checkoutService;
 
     public CheckoutController(CheckoutService checkoutService){
         this.checkoutService = checkoutService;
@@ -17,7 +17,6 @@ public class CheckoutController {
 
     @PostMapping("/purchase")
     public PurchaseResponse placeOrder(@RequestBody Purchase purchase){
-        PurchaseResponse purchaseResponse = checkoutService.placeOrder(purchase);
-        return purchaseResponse;
+        return checkoutService.placeOrder(purchase);
     }
 }
