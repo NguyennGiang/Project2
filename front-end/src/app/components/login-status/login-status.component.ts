@@ -36,14 +36,8 @@ export class LoginStatusComponent implements OnInit {
       this.oktaAuth.getUser().then(
         (res : any) => {
           this.userFullName = res.name;
-          this.userFirstName = res.firstName
-          this.userLastName = res.lastName
-
           const theEmail = res.email;
-
           this.storage.setItem('userEmail', JSON.stringify(theEmail));
-          this.storage.setItem('userFirstName', JSON.stringify(this.userFirstName));
-          this.storage.setItem('userLastName', JSON.stringify(this.userLastName));
         }
       );
     }
@@ -51,5 +45,6 @@ export class LoginStatusComponent implements OnInit {
 
   logout() {
     this.oktaAuth.signOut();
+    this.storage.clear()
   }
 }

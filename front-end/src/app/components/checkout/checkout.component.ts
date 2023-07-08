@@ -14,9 +14,6 @@ import { CheckoutService } from 'src/app/services/checkout.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit{
-copyShippingAddesstoBillingAddess($event: Event) {
-throw new Error('Method not implemented.');
-}
   
   checkoutFormGroup!: FormGroup;
   totalPrice: number = 0;
@@ -31,19 +28,21 @@ throw new Error('Method not implemented.');
 
   ngOnInit(): void {
 
-    const userEmail = JSON.parse(this.storage.getItem('userEmail')!);
-    const userLastName = JSON.parse(this.storage.getItem('userLastName')!);
-    const userFirstName = JSON.parse(this.storage.getItem('userFirstName')!);
+    let userEmail = this.storage.getItem('userEmail')
+
+    if(userEmail == null) userEmail = '{"userEmail":"null"}';
+    const theEmail = JSON.parse(userEmail);
+
 
 
     this.reviewCartDetail();
 
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
-        firstName: [userFirstName],
-        lastName: [userLastName],
+        firstName: [''],
+        lastName: [''],
         phoneNumber: [''],
-        email: [userEmail]
+        email: [theEmail]
       }),
       shippingAddress: this.formBuilder.group({
         street: [''], 
